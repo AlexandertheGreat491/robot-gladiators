@@ -7,37 +7,27 @@ var playerName = window.prompt("What is your robot's name?");
 //Define starting value of playerHealth variable
 var playerHealth = 100;
 // check to see if the value of the playerHealth variable is greater than 0
-//condition for playerHealth variable
-if (playerHealth > 0) {
-    console.log("Your player is still alive!");
-}
 //Define starting value of playerAttack
 var playerAttack = 10;
-//condition for 
-if (playerHealth === 0) {
-    console.log("This will not run.")
-}
-else {
-    console.log("This will run instead.");
-}
+var playerMoney = 10;
 //Log multiple values at once
-//Browser is being told to hold the values for these variables
-console.log(playerName, playerAttack, playerHealth);
 //defining starting values for enemyName, enemyHealth, & enemyAttack variables
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-console.log(enemyNames);
-console.log(enemyNames[0]);
-console.log(enemyNames[1]);
-console.log(enemyNames[2]);
-console.log(enemyNames.length);
 var enemyHealth = 50;
 var enemyAttack = 12;
+console.log(enemyNames);
+console.log(enemyNames.length);
+console.log(enemyNames[0]);
+console.log(enemyNames[3]);
+
 //defining starting value for playerMoney variable
-var playerMoney = 10;
+
 //Define "fight" function
-var fight = function() {
-    //Alert players that they are starting the round
-    window.alert("Welcome to Robot Gladiators!");
+var fight = function(enemyName) {
+    // repeat and execute as long as the enemy-robot is alive
+    while(enemyHealth > 0) {
+        //place fight function code block here...
+    }
     //assigning a window.prompt value to the promptFight variable
 var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 // if player choses to fight, then fight
@@ -67,6 +57,8 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
     } else {
       window.alert(playerName + " still has " + playerHealth + " health left.");
     }
+    for(var i=0; i < enemyNames.length; i++) {
+    }
     // if player choses to skip
   } else if (promptFight === "skip" || promptFight === "SKIP") {
     //confirm player wants to skip
@@ -86,6 +78,10 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
     window.alert("You need to choose a valid option. Try again!");
   }
 }
-
+for(var i = 0; i < enemyNames.length; i++){
+    var pickedEnemyName = enemyNames[i];
+    enemyHealth = 50;
+    fight(pickedEnemyName);
+}
 //Call "fight" function
 //fight();
