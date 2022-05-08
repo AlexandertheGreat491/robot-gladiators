@@ -7,24 +7,64 @@ var playerInfo = {
   name: window.prompt("What is your robot's name?"),
   health: 100,
   attack: 10, 
-  money: 10
+  money: 10,
+  reset:function() {
+    this.health = 100;
+    this.money = 10;
+    this.attack = 10;
+  }, //comma!
+  refillHealth: function() {
+    this.health += 20;
+    this.money -= 7;
+    if (this.money >=7) {
+      window.alert("Refilling player's health by 20 for 7 dollars.");
+      this.health += 20;
+      this.money -= 7;
+    }
+    else {
+      window.alert("You don't have enough money!");
+    }
+  }, //comma!
+  upgradeAttack: function() {
+    this.attack += 6;
+    this.attack -= 7;
+    if (this.money >= 7) {
+      window.alert("Upgrading player's attack by 6 for 7 dollars.");
+      this.attack += 6;
+      this.money -= 7;
+    }
+    else {
+      window.alert("You don't have enough money!");
+    }
+  }
 };
+//enemy information
+  var enemyInfo = [
+    {
+      name: "Roborto",
+      attack: randomNumber(10, 14)
+    },
+    {
+      name: "Amy Android",
+      attack: randomNumber(10, 14)
+    },
+    {
+      name: "Robo Trumble",
+      attack: randomNumber(10, 14)
+    }
+  ];
+  var enemy = {
+    name: "Roborto",
+    attack: randomNumber(10, 14),
+    shield: {
+      type: "wood",
+      strength: 10
+    }
+  };
+
 //Log multiple values at once
 //defining starting values for enemy.name, enemy.health, & enemy.attack variables
-var enemyInfo = [
-  {
-    name: "Roborto",
-    attack: 12
-  },
-  {
-    name: "Amy Android",
-    attack: 13
-  },
-  {
-    name: "Robo Trumble",
-    attack: 14
-  }
-];
+
 console.log(enemyNames);
 console.log(enemyNames.length);
 console.log(enemyNames[0]);
@@ -144,6 +184,8 @@ var startGame = function() {
   playerInfo.health = 100;
   playerInfo.attack = 10;
   playerInfo.money = 10;
+  //reset player stats
+  playerInfo.reset();
   //other logic remains the same...
   for (var i = 0; i < enemyInfo.length; i++) {
     if (playerInfo.health > 0) {
@@ -200,43 +242,17 @@ var shop = function() {
   );
   // use switch to carry out action
   switch (shopOptionPrompt) {
-    //if player chooses REFILL or refill
-    case "REFILL": 
-    case "refill":
-      //player will see this message
-      if (playerInfo.money >= 7){
-        window.alert("Refilling player's health by 20 for 7 dollars.");
-
-        //increase health and decrease money
-        //increase health and decrease money
-      //defines what happens playerInfo.health & playerInfo.money if player chooses REFILL
-      playerInfo.health = playerInfo.health + 20;
-      playerInfo.money = playerInfo.money - 7;
-      }
-      else {
-        window.alert("You don't have enough money!");
-      }
+    case 'REFILL':
+    case 'refill':
+      playerInfo.refillHealth();
       break;
-      //if player chooses to "UPGRADE" or "upgrade"
-      case "UPGRADE":
-      case "upgrade":
-        if (playerInfo.money >= 7){
-//player will see this message
-window.alert("Upgrading player's attack by 6 for 7 dollars.");
-//then this is what happens to playerInfo.attack & playerInfo.money
-//increase attack and decrease money
-playerInfo.attack = playerInfo.attack + 6;
-playerInfo.money = playerInfo.money - 7;
-        }
-        else {
-          window.alert("You don't have enough money!");
-        }
-        
-        break;
-        //if a player choses "LEAVE" or "leave"
-        case "LEAVE":
-        case "leave":
-          window.alert("Leaving the store.");
+    case 'UPGRADE':
+    case 'upgrade':
+      playerInfo.upgradeAttack();
+      break;
+    case 'LEAVE':
+    case 'leave':
+      window.alert('Leaving the store.');
           //do nothing, so function will end
           break;
           //default is triggered when player choses none of the options when shop() is called
