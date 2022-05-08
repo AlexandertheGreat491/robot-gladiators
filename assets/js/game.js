@@ -11,9 +11,20 @@ var playerInfo = {
 };
 //Log multiple values at once
 //defining starting values for enemyName, enemyHealth, & enemyAttack variables
-var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-var enemyHealth = 50;
-var enemyAttack = 12;
+var enemyInfo = [
+  {
+    name: "Roborto",
+    attack: 12
+  },
+  {
+    name: "Amy Android",
+    attack: 13
+  },
+  {
+    name: "Robo Trumble",
+    attack: 14
+  }
+]
 console.log(enemyNames);
 console.log(enemyNames.length);
 console.log(enemyNames[0]);
