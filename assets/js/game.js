@@ -160,7 +160,7 @@ var startGame = function() {
 
 //function to end the entire game
 var endGame = function() {
-  if (playerInfo.health > 0) {window.alert("Great job, you've survived the game! You now have a score of" + playerMoney + ".");
+  if (playerInfo.health > 0) {window.alert("Great job, you've survived the game! You now have a score of" + playerInfo.money + ".");
 }
 else {
   window.alert("You've lost your robot in battle.");
@@ -207,7 +207,7 @@ var shop = function() {
       //if player chooses to "UPGRADE" or "upgrade"
       case "UPGRADE":
       case "upgrade":
-        if (playerMoney >= 7){
+        if (playerInfo.money >= 7){
 //player will see this message
 window.alert("Upgrading player's attack by 6 for 7 dollars.");
 //then this is what happens to playerInfo.attack & playerInfo.money
