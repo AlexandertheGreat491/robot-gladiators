@@ -137,7 +137,7 @@ var startGame = function() {
 
       var pickedEnemyName = enemyNames[i];
 
-      enemyHealth = Math.floor(Math.random() * 21) + 40;
+      enemyHealth = randomNumber(40, 60);
 
       fight(pickedEnemyName);
       //if player is still alive and we're not at the last enemy in the array
