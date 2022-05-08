@@ -10,7 +10,7 @@ var playerInfo = {
   money: 10
 };
 //Log multiple values at once
-//defining starting values for enemyName, enemy.health, & enemyAttack variables
+//defining starting values for enemy.name, enemy.health, & enemy.attack variables
 var enemyInfo = [
   {
     name: "Roborto",
@@ -36,7 +36,7 @@ var playerInfo.money = 10;
 
 var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
 var enemy.health = 50;
-var enemyAttack = 12;
+var enemy.attack = 12;
 
 console.log(enemyNames);
 console.log(enemyNames.length);
@@ -78,12 +78,12 @@ enemy.health= Math.max(0, enemy.health - damage);
     // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
     enemy.health = (Math.max(0, enemy.health - playerInfo.attack));
     console.log(
-      playerInfo.name + ' attacked ' + enemyName + '. ' + enemyName + ' now has ' + enemy.health + ' health remaining.'
+      playerInfo.name + ' attacked ' + enemy.name + '. ' + enemy.name + ' now has ' + enemy.health + ' health remaining.'
     );
 
     // check enemy's health
     if (enemy.health <= 0) {
-      window.alert(enemyName + ' has died!');
+      window.alert(enemy.name + ' has died!');
 
       // award player money for winning
      playerInfo.money = playerInfo.money + 20;
@@ -91,13 +91,13 @@ enemy.health= Math.max(0, enemy.health - damage);
       // leave while() loop since enemy is dead
       break;
     } else {
-      window.alert(enemyName + ' still has ' + enemy.health + ' health left.');
+      window.alert(enemy.name + ' still has ' + enemy.health + ' health left.');
     }
-   var damage = randomNumber(enemyAttack -3, enemyAttack);
-    // remove players's health by subtracting the amount set in the enemyAttack variable
-    playerInfo.health = Math.max(0,playerInfo.health - enemyAttack);
+   var damage = randomNumber(enemy.attack -3, enemy.attack);
+    // remove players's health by subtracting the amount set in the enemy.attack variable
+    playerInfo.health = Math.max(0,playerInfo.health - enemy.attack);
     console.log(
-      enemyName + ' attacked ' + playerInfo.name + '. ' + playerInfo.name + ' now has ' + playerHealth + ' health remaining.'
+      enemy.name + ' attacked ' + playerInfo.name + '. ' + playerInfo.name + ' now has ' + playerHealth + ' health remaining.'
     );
 
     // check player's health
