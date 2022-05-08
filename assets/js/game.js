@@ -33,6 +33,13 @@ console.log(enemyNames.length);
 console.log(enemyNames[0]);
 console.log(enemyNames[3]);
 
+//function to generate a random numeric value
+var randomNumber = function(40, 60) {
+  var value = Math.floor(Math.random() * (21)) + 40;
+
+  return value;
+}
+enemyHealth = randomNumber();
 // fight function (now with parameter for enemy's name)
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
@@ -130,7 +137,7 @@ var startGame = function() {
 
       var pickedEnemyName = enemyNames[i];
 
-      enemyHealth = 50;
+      enemyHealth = Math.floor(Math.random() * 21) + 40;
 
       fight(pickedEnemyName);
       //if player is still alive and we're not at the last enemy in the array
