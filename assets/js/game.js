@@ -53,22 +53,14 @@ var playerInfo = {
       attack: randomNumber(10, 14)
     }
   ];
-  var enemy = {
-    name: "Roborto",
-    attack: randomNumber(10, 14),
-    shield: {
-      type: "wood",
-      strength: 10
-    }
-  };
 
 //Log multiple values at once
 //defining starting values for enemy.name, enemy.health, & enemy.attack variables
 
-console.log(enemyNames);
-console.log(enemyNames.length);
-console.log(enemyNames[0]);
-console.log(enemyNames[3]);
+//console.log(enemyNames);
+//console.log(enemyNames.length);
+//console.log(enemyNames[0]);
+//console.log(enemyNames[3]);
 var playerInfo.name = window.prompt("What is your robot's name?");
 var playerInfo.health = 100;
 var playerInfo.attack = 10;
@@ -78,10 +70,10 @@ var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
 var enemy.health = 50;
 var enemy.attack = 12;
 
-console.log(enemyNames);
-console.log(enemyNames.length);
-console.log(enemyNames[0]);
-console.log(enemyNames[3]);
+//console.log(enemyNames);
+//console.log(enemyNames.length);
+//console.log(enemyNames[0]);
+//console.log(enemyNames[3]);
 
 //function to generate a random numeric value
 var randomNumber = function(40, 60) {
