@@ -33,6 +33,13 @@ console.log(enemyNames.length);
 console.log(enemyNames[0]);
 console.log(enemyNames[3]);
 
+//function to generate a random numeric value
+var randomNumber = function(40, 60) {
+  var value = Math.floor(Math.random() * (21)) + 40;
+
+  return value;
+}
+enemyHealth = randomNumber();
 // fight function (now with parameter for enemy's name)
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
@@ -53,7 +60,9 @@ var fight = function(enemyName) {
         break;
       }
     }
-
+//generate random damage vlaue based on player's attack power
+var damage = randomNumber(playerAttack - 3, playerAttack);
+enemyHealth = Math.max(0, enemyHealth - damage);
     // remove enemy's health by subtracting the amount set in the playerAttack variable
     enemyHealth = (Math.max(0,enemyHealth - playerAttack));
     console.log(
@@ -72,7 +81,7 @@ var fight = function(enemyName) {
     } else {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
     }
-
+   var damage = randomNumber(enemyAttack -3, enemyAttack);
     // remove players's health by subtracting the amount set in the enemyAttack variable
     playerHealth = Math.max(0,playerHealth - enemyAttack);
     console.log(
@@ -101,7 +110,7 @@ for (var i = 0; i < enemyNames.length; i++) {
     var pickedEnemyNames = enemyNames[i];
 
     // reset enemyHealth before starting new fight
-    enemyHealth = 50;
+    enemyHealth = randomNumber(40, 60);
 
     //use debugger to pause script from running and check what's going on at that moment in the code
     //debugger;
@@ -130,7 +139,7 @@ var startGame = function() {
 
       var pickedEnemyName = enemyNames[i];
 
-      enemyHealth = 50;
+      enemyHealth = randomNumber(40, 60);
 
       fight(pickedEnemyName);
       //if player is still alive and we're not at the last enemy in the array
