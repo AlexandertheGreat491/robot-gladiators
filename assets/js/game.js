@@ -60,7 +60,9 @@ var fight = function(enemyName) {
         break;
       }
     }
-
+//generate random damage vlaue based on player's attack power
+var damage = randomNumber(playerAttack - 3, playerAttack);
+enemyHealth = Math.max(0, enemyHealth - damage);
     // remove enemy's health by subtracting the amount set in the playerAttack variable
     enemyHealth = (Math.max(0,enemyHealth - playerAttack));
     console.log(
@@ -79,7 +81,7 @@ var fight = function(enemyName) {
     } else {
       window.alert(enemyName + ' still has ' + enemyHealth + ' health left.');
     }
-
+   var damage = randomNumber(enemyAttack -3, enemyAttack);
     // remove players's health by subtracting the amount set in the enemyAttack variable
     playerHealth = Math.max(0,playerHealth - enemyAttack);
     console.log(
@@ -108,7 +110,7 @@ for (var i = 0; i < enemyNames.length; i++) {
     var pickedEnemyNames = enemyNames[i];
 
     // reset enemyHealth before starting new fight
-    enemyHealth = 50;
+    enemyHealth = randomNumber(40, 60);
 
     //use debugger to pause script from running and check what's going on at that moment in the code
     //debugger;
