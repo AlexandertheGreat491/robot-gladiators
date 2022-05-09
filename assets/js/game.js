@@ -74,7 +74,28 @@ var enemy.attack = 12;
 //console.log(enemyNames.length);
 //console.log(enemyNames[0]);
 //console.log(enemyNames[3]);
-
+var fightOrSkip = function() {
+  //ask player if they'd like to fight or skip using fightOrSkip function
+  var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+  //Conditional Recursive Function Call
+  if (promptFight === "" || promptFight === null) {
+    window.alert("You need to provide a valid answer! Please try again.");
+    return fightOrSkip();
+  }
+  //if player pickes "skip" confirm and then stop the loop
+  if (promptFight === "skip") {
+    //confirm player wants to skip
+    var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+    //if yes(true), leave fight
+    if (confirmSkip) {
+      window.alert(playerInfo.name + "has decided to skip this fight. Goodbye!");
+      //subtract money from playerMoney for skipping, but don't let them go into the negative
+      playerInfo.money =  Math.max(0, playerInfor.money - 10);
+      //return true if player wants to leave
+      return true;
+    }
+  }
+}
 //function to generate a random numeric value
 var randomNumber = function(40, 60) {
   var value = Math.floor(Math.random() * (21)) + 40;
@@ -87,9 +108,11 @@ var fight = function(enemy) {
   console.log(enemy);
   //other logic...
   while (playerInfo.health > 0 && enemy.health > 0) {
-    // ask player if they'd like to fight or run
-    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
-
+    if (fightOrSkip()) {
+      //if true, leave fight by breaking loop
+      break;
+    }
+    var damage = randomNumber(playerInfo.attack -3, playerInfo.attack);
     // if player picks "skip" confirm and then stop the loop
     if (promptFight === "skip" || promptFight === "SKIP") {
       // confirm player wants to skip
@@ -232,18 +255,16 @@ var shop = function() {
   var shopOptionPrompt = window.prompt (
     "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
   );
+  shopOptionPrompt = parseInt(shopOptionPrompt);
   // use switch to carry out action
   switch (shopOptionPrompt) {
-    case 'REFILL':
-    case 'refill':
+    case 1:
       playerInfo.refillHealth();
       break;
-    case 'UPGRADE':
-    case 'upgrade':
+    case 2:
       playerInfo.upgradeAttack();
       break;
-    case 'LEAVE':
-    case 'leave':
+   case 3:
       window.alert('Leaving the store.');
           //do nothing, so function will end
           break;
@@ -256,6 +277,7 @@ var shop = function() {
   }
 };
 //function to set name
+//function triggered when player doesn't enter a name
 var getPlayerName = function() {
   var name = "";
   while (name === "" || name === null){
